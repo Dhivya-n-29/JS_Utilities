@@ -1,1 +1,42 @@
-<h1>Hello All</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/0ab4a47ebf.js" crossorigin="anonymous"></script></head> 
+<body>
+    <div class="buttons">
+        <button onclick="showToast(successmsg)">Success</button>
+        <button onclick="showToast(errormsg)">Error</button>
+        <button onclick="showToast(invalidmsg)">Invalid</button>
+    </div>
+    <div id="toastbox">
+    </div>
+
+<script>
+    let toastBox=document.getElementById('toastbox');
+    let successmsg='<i class="fa-solid fa-circle-check"></i>Successfully submitted';
+    let errormsg='<i class="fa-solid fa-circle-xmark"></i> error';
+    let invalidmsg='<i class="fa-solid fa-circle-exclamation"></i> invalid input';
+
+
+    function showToast(msg){
+        let toast=document.createElement('div');
+        toast.classList.add('toast');
+        toast.innerHTML=msg
+        toastBox.appendChild(toast);
+        if(msg.includes('error')){
+            toast.classList.add('error');
+        }
+        if(msg.includes('invalid')){
+            toast.classList.add('invalid');
+        }
+
+        setTimeout(()=>{
+            toast.remove();
+        },6000);
+
+
+    }
+</script>
+</body>
+</html>
